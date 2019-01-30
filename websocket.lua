@@ -3,11 +3,11 @@ local cjson = require("cjson.safe").new()
 local redis = require('resty.redis')
 
 local timeout = 5000
-local recv_threshold = 5 -- socket will be closed by server while recv_frame's continuous failure times exceeding this threshold, and a test ping is not answered by pong.
+local recv_threshold = 5 -- socket will be closed by server while recv_frame's continuous failure count exceeding this threshold, and a test ping is not answered by pong.
 local recv_errors = 0
 local test_ping_sent = false
 local test_ping_sendings = 0
-local test_ping_threshold = 5 -- socket will be closed while ping_frame sended times exceeding this threshold.
+local test_ping_threshold = 5 -- socket will be closed while ping_frame sent count exceeding this threshold.
 
 local redis_host = "127.0.0.1"
 local redis_port = 6379
